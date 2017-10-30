@@ -16,5 +16,5 @@ Server代码放在了
     cd /home/myJava
 
 Centos运行Java的命令
-    java xxx        //运行该程序
-	javac xxx.java  //编译生成Class文件
+    javac xxx.java //编译生成Class文件
+	java xxx //运行该程序
