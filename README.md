@@ -13,10 +13,10 @@ Server文件夹下是server端的代码
 Server运行在阿里云的ECS服务器中，集成Java开发环境的Centos 7操作系统
 
 Server代码放在了 
-		cd /home/myJava
+	cd /home/myJava
 
 Centos运行Java的命令
-		javac xxx.java  //编译生成Class文件
-		java xxx        //运行该程序
+	javac xxx.java  //编译生成Class文件
+	java xxx        //运行该程序
 
 
