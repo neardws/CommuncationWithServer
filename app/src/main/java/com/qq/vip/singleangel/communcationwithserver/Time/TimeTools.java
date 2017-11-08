@@ -30,9 +30,9 @@ public class TimeTools {
     }
 
     public void init(){
-        timer = new Timer();
+
         ntpTime = new NtpTime();
-        setTimerTask();
+
     }
 
     private void setTimerTask() {

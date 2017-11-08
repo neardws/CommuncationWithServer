@@ -7,17 +7,29 @@
     tools:context="com.qq.vip.singleangel.communcationwithserver.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <Button
             android:id="@+id/connect"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="连接" />
+        <Button
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="发送" />
         <TextView
-            android:id="@+id/tv_message"
+            android:id="@+id/ip_add"
             android:text="@string/app_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/mac_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
     </LinearLayout>
 
 </LinearLayout>
