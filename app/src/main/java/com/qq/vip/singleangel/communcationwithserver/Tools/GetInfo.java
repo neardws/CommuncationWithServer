@@ -22,12 +22,12 @@ public class GetInfo {
 
     private Context context;
 
-    public GetInfo(Context context){
-        this.context = context;
+    public GetInfo(){
+
     }
 
     public HeartBeatsInfo getInfo(){
-        HeartBeatsInfo info = new HeartBeatsInfo(getIpAdd(),getMacAdd());
+        HeartBeatsInfo info = new HeartBeatsInfo(getMacAdd(),getIpAdd());
         return info;
     }
     /**

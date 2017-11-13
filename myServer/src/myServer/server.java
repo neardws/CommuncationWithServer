@@ -1,25 +1,19 @@
 package myServer;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Queue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import com.qq.vip.singleangel.communcationwithserver.ClassDefined.HeartBeatsInfo;  
 
-public class Server implements Runnable{
+/**
+ * 未考虑线程安全、之后加入线程同步功能
+ * @author singl
+ *
+ */
+public class server implements Runnable{
 	
 	public static final String SERVER_IP = "120.78.167.211";
 	public static final int SERVER_PORT = 34567;
@@ -29,7 +23,7 @@ public class Server implements Runnable{
 	public static final String START_CONNECT = "StartConnect";
 	public static final String STOP_CONNECT = "StopConnect";
 	
-	public Server() {
+	public server() {
 	}
 	
 	/**
@@ -64,11 +58,14 @@ public class Server implements Runnable{
 	public static void main(String a[]) {
 		Thread hbThread = new Thread(new HeartBeats());
 		hbThread.start();
-		Thread serverThread = new Thread(new Server());
+		Thread serverThread = new Thread(new server());
 		serverThread.start();
+		Thread handRequestThread = new Thread(new HandleRequest());
+		handRequestThread.start();
 		
 	}
 
+	@Override
 	public void run() {
 		try {
 			@SuppressWarnings("resource")
@@ -108,7 +105,7 @@ public class Server implements Runnable{
 						HeartBeatsInfo info = new HeartBeatsInfo(ip,mac);
 						objOutput.writeObject(info);
 					}else {
-						HeartBeatsInfo info = new HeartBeatsInfo("192.168.0.1","1A:2B:3C:52:41:98:12:32");
+						HeartBeatsInfo info = new HeartBeatsInfo("192.168.0.1","1A:2B:3C:52:41:98:12:32");  //默认发送，如果List为空
 						objOutput.writeObject(info);
 					}
 					out.close();  //关闭流

@@ -2,6 +2,7 @@ package myServer;
 
 import java.util.ArrayList;
 
+import com.qq.vip.singleangel.communcationwithserver.ClassDefined.Action;
 import com.qq.vip.singleangel.communcationwithserver.ClassDefined.HeartBeatsInfo;
 /**
  * 存储部分数据量较小的数据，保存在全局变量中，之后考虑加上MySQL
@@ -36,13 +37,16 @@ public class DataThings {
 		}
 	}
 	
-	public static boolean addAction(String macAdd, String action) {
-		if(action != null) {
+	public static boolean addAction(String macAdd, String action, String conMacAdd) {
+		if(conMacAdd != null ) {
+			Action act = new Action(macAdd, action, conMacAdd);
+			actions.add(act);
+			return true;
+		}else {
 			Action act = new Action(macAdd, action, "");
 			actions.add(act);
 			return true;
 		}
-		return false;
 	}
 	
 }
